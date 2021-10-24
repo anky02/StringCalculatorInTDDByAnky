@@ -26,7 +26,7 @@ public class StringCalcTest {
         assertEquals(sc.add(""),0);
         assertEquals(sc.add("1"),1);
         assertEquals(sc.add("2"),2);
-        assertEquals(sc.add("1,2"),3);
+        assertEquals(sc.add("2566,33,44,55,50,44,100,550"),2566+33+44+55+50+44+100+550);
     }
     
 }

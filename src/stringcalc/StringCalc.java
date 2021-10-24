@@ -16,6 +16,7 @@ public class StringCalc {
      */
    
     int add(String numbers){
+        int sum=0;
         if(numbers.length()<2){
             if(numbers.isEmpty()){
                 return 0;
@@ -23,9 +24,12 @@ public class StringCalc {
                 return Integer.parseInt(numbers);
             }
         }else{
-            String arr[]=numbers.split(",");
-            return(Integer.parseInt(arr[0])+Integer.parseInt(arr[1]));
             
+            String arr[]=numbers.split(",");
+            for(String numArray:arr){
+                sum+=Integer.parseInt(numArray);
+            }
+         return sum;    
         }
         
     }
