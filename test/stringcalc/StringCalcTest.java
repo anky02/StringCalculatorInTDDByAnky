@@ -26,6 +26,7 @@ public class StringCalcTest {
         assertEquals(sc.add(""),0);
         assertEquals(sc.add("1"),1);
         assertEquals(sc.add("2"),2);
+        assertEquals(sc.add("1,2"),3);
     }
     
 }

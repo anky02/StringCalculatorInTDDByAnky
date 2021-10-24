@@ -16,13 +16,17 @@ public class StringCalc {
      */
    
     int add(String numbers){
-        if(numbers.isEmpty()){
-            return 0;    
-        }
-        else{
-            int temp=Integer.parseInt(numbers);
-            return temp;
-        }
+        if(numbers.length()<2){
+            if(numbers.isEmpty()){
+                return 0;
+            }else{
+                return Integer.parseInt(numbers);
+            }
+        }else{
+            String arr[]=numbers.split(",");
+            return(Integer.parseInt(arr[0])+Integer.parseInt(arr[1]));
             
+        }
+        
     }
 }
