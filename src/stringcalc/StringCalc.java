@@ -19,14 +19,15 @@ public class StringCalc {
         int sum=0;
         if(numbers.length()<2){
             if(numbers.isEmpty()){
-                return 0;
+                return 0;   
             }else{
                 return Integer.parseInt(numbers);
             }
         }else{
+            String arr[]=numbers.split(",|\n");
             
-            String arr[]=numbers.split(",");
             for(String numArray:arr){
+                
                 sum+=Integer.parseInt(numArray);
             }
          return sum;    
