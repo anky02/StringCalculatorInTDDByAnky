@@ -52,6 +52,7 @@ public class StringCalcTest {
     @Test
     public void testOtherDelimeter() {
         assertEquals(sc.add("//;\n1;2;3"),1+2+3);
+  
     }
     @Test
     public void testNegativeNumber() {
@@ -65,6 +66,14 @@ public class StringCalcTest {
         }catch(IllegalArgumentException e){
            assertEquals(e.getMessage(),"Negatives not allowed: -2,-4,-5");
         }
+    }
+    @Test
+    public void testOneThousand() {
+        assertEquals(sc.addOneThousand("2+1001"),2);
+    }
+    @Test
+    public void testMoreDelimiter() {
+        assertEquals(sc.otherDelimiter("//[***]\n1***2***3"),1+2+3);
     }
     
 }

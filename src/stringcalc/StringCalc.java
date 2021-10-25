@@ -7,6 +7,7 @@ package stringcalc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -47,7 +48,6 @@ public class StringCalc {
         return numbers.split(divider);
     }
     String negativeNumbers(String numbers) {
-       
         StringBuilder sb=new StringBuilder();
         String arr[]=numbers.split(",");
         
@@ -55,13 +55,39 @@ public class StringCalc {
             if (Integer.parseInt(number) < 0) {
                 sb.append(number.toString()).append(",");
             }
-            
         }
         if(sb.length()>0){
             sb.deleteCharAt(sb.length()-1);
+            
         }
         throw new IllegalArgumentException("Negatives not allowed: "+sb.toString());
-
-         
     }
+    int addOneThousand(String numbers){
+        int sum=0;
+        String arr[]=numbers.split("\\+");
+        for(int i=0;i<arr.length;i++){
+            if(Integer.parseInt(arr[i])<1000){
+             sum=sum+Integer.parseInt(arr[i]);   
+            }
+        }
+        return sum;
+    }
+    int otherDelimiter(String numbers){
+        int sum=0;
+        String delim=",";
+        if(numbers.matches("//\\[(.*)\\]\n(.*)")){
+            delim=Character.toString(numbers.charAt(6));
+            numbers = numbers.substring(8);
+        }
+        String numList[]=numbers.split("([*])+");
+
+                for(String numArray:numList){
+                    if(!Pattern.matches("([*])+",numArray)) {
+                         sum+=Integer.parseInt(numArray);
+                    }
+                   
+                }
+        return sum;   
+    }
+    
 }
