@@ -5,11 +5,11 @@
  */
 package stringcalc;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-//import org.junit.validator.AnnotationValidator;
 /**
  *
  * @author ankit
@@ -37,12 +37,21 @@ public class StringCalcTest {
         assertEquals(sc.add("1"),1);
     }
     @Test
+    public void testTwoNumber() {
+        assertEquals(sc.add("1,2"),3);
+    }
+    @Test
     public void testMultipleNumber() {
         assertEquals(sc.add("2566,33,44,55,50,44,100,550"),2566+33+44+55+50+44+100+550);
     }
     @Test
     public void testNewLine() {
         assertEquals(sc.add("1\n2,3"),1+2+3);
+        
+    }
+    @Test
+    public void testOtherDelimeter() {
+        assertEquals(sc.add("//;\n1;2;3"),1+2+3);
     }
     
 }

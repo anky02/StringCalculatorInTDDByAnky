@@ -23,15 +23,24 @@ public class StringCalc {
             }else{
                 return Integer.parseInt(numbers);
             }
-        }else{
-            String arr[]=numbers.split(",|\n");
-            
-            for(String numArray:arr){
-                
-                sum+=Integer.parseInt(numArray);
+        }else {
+            String delimiter = ",";
+            if (numbers.matches("//(.*)\n(.*)")) {
+                delimiter = Character.toString(numbers.charAt(2));
+                numbers = numbers.substring(4);
             }
-         return sum;    
+
+            String[] numList = splitNumbers(numbers, delimiter + "|\n");
+
+                for(String numArray:numList){
+
+                    sum+=Integer.parseInt(numArray);
+                }
+                return sum;    
         }
         
+    }
+    private String[] splitNumbers(String numbers, String divider) {
+        return numbers.split(divider);
     }
 }
