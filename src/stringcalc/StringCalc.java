@@ -92,9 +92,26 @@ public class StringCalc {
     int mutipleDelimiter(String numbers){
         int sum=0;
         String delim=",";
-        if(numbers.matches("//\\[(.*)\\]\\[(.*)\\]\n(.*)")){
+        if(numbers.matches("//\\[(.*)+\\]\\[(.*)+\\]\n(.*)+")){
             delim=Character.toString(numbers.charAt(7));
             numbers = numbers.substring(9);
+        }
+        String numList[]=numbers.split("([*])+|([\\%])+");
+
+                for(String numArray:numList){
+                    if(!Pattern.matches("([*])+ |([\\%])+",numArray)) {
+                         sum+=Integer.parseInt(numArray);
+                    }
+                   
+                }
+        return sum;
+    }
+    int mutipleDelimiterMoreThanOneTime(String numbers){
+        int sum=0;
+        String delim=",";
+        if(numbers.matches("//\\[(.*)+\\]\\[(.*)+\\]\n(.*)+")){
+            delim=Character.toString(numbers.charAt(9));
+            numbers = numbers.substring(11);
         }
         String numList[]=numbers.split("([*])+|([\\%])+");
 
