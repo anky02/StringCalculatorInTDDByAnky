@@ -89,5 +89,21 @@ public class StringCalc {
                 }
         return sum;   
     }
-    
+    int mutipleDelimiter(String numbers){
+        int sum=0;
+        String delim=",";
+        if(numbers.matches("//\\[(.*)\\]\\[(.*)\\]\n(.*)")){
+            delim=Character.toString(numbers.charAt(7));
+            numbers = numbers.substring(9);
+        }
+        String numList[]=numbers.split("([*])+|([\\%])+");
+
+                for(String numArray:numList){
+                    if(!Pattern.matches("([*])+ |([\\%])+",numArray)) {
+                         sum+=Integer.parseInt(numArray);
+                    }
+                   
+                }
+        return sum;
+    }
 }

@@ -75,5 +75,8 @@ public class StringCalcTest {
     public void testMoreDelimiter() {
         assertEquals(sc.otherDelimiter("//[***]\n1***2***3"),1+2+3);
     }
-    
+    @Test
+    public void testDifferentDelimiter() {
+        assertEquals(sc.mutipleDelimiter("//[*][%]\n1*2%3"),1+2+3);
+    }
 }
