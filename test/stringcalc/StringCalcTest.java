@@ -53,5 +53,18 @@ public class StringCalcTest {
     public void testOtherDelimeter() {
         assertEquals(sc.add("//;\n1;2;3"),1+2+3);
     }
+    @Test
+    public void testNegativeNumber() {
+        try{
+            sc.add("-1,2");
+        }catch(IllegalArgumentException e){
+           assertEquals(e.getMessage(),"Negatives not allowed: -1");
+        }
+        try{
+            sc.add("1,2,-3,4,-5");
+        }catch(IllegalArgumentException e){
+           assertEquals(e.getMessage(),"Negatives not allowed: -3,-5");
+        }
+    }
     
 }
