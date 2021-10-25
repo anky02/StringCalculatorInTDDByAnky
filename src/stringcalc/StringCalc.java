@@ -5,6 +5,9 @@
  */
 package stringcalc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ankit
@@ -30,7 +33,7 @@ public class StringCalc {
                 numbers = numbers.substring(4);
             }
 
-            String[] numList = splitNumbers(numbers, delimiter + "|\n");
+            String numList[] = splitNumbers(numbers, delimiter + "|\n");
 
                 for(String numArray:numList){
 
@@ -42,5 +45,23 @@ public class StringCalc {
     }
     private String[] splitNumbers(String numbers, String divider) {
         return numbers.split(divider);
+    }
+    String negativeNumbers(String numbers) {
+       
+        StringBuilder sb=new StringBuilder();
+        String arr[]=numbers.split(",");
+        
+        for (String number : arr) {
+            if (Integer.parseInt(number) < 0) {
+                sb.append(number.toString()).append(",");
+            }
+            
+        }
+        if(sb.length()>0){
+            sb.deleteCharAt(sb.length()-1);
+        }
+        throw new IllegalArgumentException("Negatives not allowed: "+sb.toString());
+
+         
     }
 }
